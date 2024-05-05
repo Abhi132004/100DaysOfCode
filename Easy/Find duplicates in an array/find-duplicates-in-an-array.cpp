@@ -5,28 +5,28 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
   public:
-vector<int> duplicates(long long arr[], int n) {
-    vector<int> ans;
-    unordered_map<long long, int> mp;
-    
-    for(int i = 0; i < n; i++) {
-        mp[arr[i]]++;
-    }
-    
-    for(auto m : mp) {
-        if(m.second > 1) {
-            ans.push_back(m.first);
+    vector<int> duplicates(long long arr[], int n) {
+        // code here
+        
+        vector<int> ans;
+        map<long long int,int> mp;
+        for(int i = 0;i<n;i++){
+            mp[arr[i]]++;
         }
+        
+        for(auto m:mp){
+            if(m.second > 1){
+                ans.push_back(m.first);
+            }
+        }
+        
+        if(ans.size() == 0){
+            ans.push_back(-1);
+        }
+        return ans;
+        
+        
     }
-    
-    if(ans.empty()) {
-        ans.push_back(-1);
-    } else {
-        sort(ans.begin(), ans.end());
-    }
-    
-    return ans;
-}
 };
 
 
