@@ -30,17 +30,16 @@ class Array {
 class Solution {
 public:
     int minimumCost(int n, int w, std::vector<int>& cost) {
-        // Create a DP array to store the minimum cost for each weight
         std::vector<int> dp(w + 1, INT_MAX);
-        dp[0] = 0;  // The cost to buy 0 kg is 0
+        dp[0] = 0;  
 
-        // Loop through each weight capacity from 1 to w
-        for (int i = 1; i <= w; ++i) {
-            // Try every packet size from 1 kg to n kg
-            for (int j = 1; j <= n; ++j) {
-                // If the packet size is j kg and it is available
+  
+        for (int i = 1; i <= w; i++) {
+       
+            for (int j = 1; j <= n; j++) {
+               
                 if (j <= i && cost[j - 1] != -1) {
-                    // If using this packet size leads to a lower cost
+           
                     if (dp[i - j] != INT_MAX) {
                         dp[i] = std::min(dp[i], dp[i - j] + cost[j - 1]);
                     }
